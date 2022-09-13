@@ -158,7 +158,7 @@ See https://apps.ankiweb.net/docs/manual.html#latex-conflicts.")
       ;; might not be called right away but at a later time, that's
       ;; why here we manually invoke callbacks to receive the result.
       (unless (request-response-done-p response)
-        (request--curl-callback (get-buffer-process (request-response--buffer response)) "finished\n")))
+        (request--curl-callback "localhost" (get-buffer-process (request-response--buffer response)) "finished\n")))
 
     (when err (error "Error communicating with AnkiConnect using cURL: %s" err))
     (or reply (error "Got empty reply from AnkiConnect"))))
